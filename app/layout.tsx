@@ -14,7 +14,11 @@ export default function RootLayout({
   return (
     <html className={ubuntu.className}>
       <head></head>
-      <body className='bg-magnolia'>{children}</body>
+      <body className='bg-magnolia md:max-h-[100vh] relative'>
+        <main className='md:mx-auto md:mt-32 md:w-[70vw] md:h-[70vh] md:bg-white md:rounded-md'>
+          {children}
+        </main>
+      </body>
     </html>
   );
 }
