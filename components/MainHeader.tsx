@@ -2,7 +2,7 @@ import Image from 'next/image';
 import React from 'react';
 import SectionStepGroup from './SectionStepGroup';
 
-function MainHeader() {
+function MainHeader({step}: {step: number}) {
   return (
     <header className='relative w-full h-[30vh] md:w-[20vw] md:h-[66vh]'>
       <Image
@@ -17,7 +17,7 @@ function MainHeader() {
         className='hidden object-bottom object-cover md:rounded-md md:block'
         fill
       />
-      <SectionStepGroup />
+      <SectionStepGroup step={step} />
     </header>
   );
 }
