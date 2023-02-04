@@ -21,8 +21,6 @@ function MainHeader() {
     }
   }, [pathname]);
 
-  console.log(pathname);
-
   return (
     <header className='relative w-full h-[30vh] md:w-[20vw] md:h-[66vh]'>
       <Image

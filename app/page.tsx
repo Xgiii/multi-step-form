@@ -23,6 +23,7 @@ function HomePage() {
               Name
             </label>
             <input
+              required
               type='text'
               id='name'
               placeholder='e.g. Stephen King'
@@ -34,6 +35,7 @@ function HomePage() {
               Email Address
             </label>
             <input
+              required
               type='email'
               id='email'
               placeholder='e.g. stephen.king@lorem.com'
@@ -45,6 +47,7 @@ function HomePage() {
               Phone Number
             </label>
             <input
+              required
               type='text'
               id='phone'
               placeholder='e.g. +1 234 567 890'
