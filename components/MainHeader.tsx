@@ -1,8 +1,28 @@
+'use client';
+
 import Image from 'next/image';
-import React from 'react';
+import { usePathname } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
 import SectionStepGroup from './SectionStepGroup';
 
-function MainHeader({step}: {step: number}) {
+function MainHeader() {
+  const [step, setStep] = useState(1);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    if (pathname === '/') {
+      setStep(1);
+    } else if (pathname === '/select-plan') {
+      setStep(2);
+    } else if (pathname === '/add-ons') {
+      setStep(3);
+    } else if (pathname === '/summary') {
+      setStep(4);
+    }
+  }, [pathname]);
+
+  console.log(pathname);
+
   return (
     <header className='relative w-full h-[30vh] md:w-[20vw] md:h-[66vh]'>
       <Image
