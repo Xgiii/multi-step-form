@@ -54,11 +54,11 @@ function HomePage() {
               className='border border-cool-gray p-3 rounded-md outline-marine-blue'
             />
           </div>
-          <div className='absolute bottom-[-27vh] left-[-10vw] w-[105vw] h-[10vh] bg-white md:hidden'>
-            <div className='flex justify-end px-[5vw] py-[2vh]'>
-              <button className='main-btn'>Next Step</button>
-            </div>
+
+          <div className='flex justify-end py-[2vh] md:hidden'>
+            <button className='main-btn'>Next Step</button>
           </div>
+
           <div className='hidden md:flex justify-end md:py-4 lg:py-12'>
             <button className='main-btn'>Next Step</button>
           </div>

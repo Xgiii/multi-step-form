@@ -22,7 +22,7 @@ function MainHeader() {
   }, [pathname]);
 
   return (
-    <header className='relative w-full h-[30vh] md:w-[20vw] md:h-[66vh]'>
+    <header className='relative w-full h-[30vh] md:w-[30vw] lg:w-[20vw] md:h-[66vh]'>
       <Image
         src='/bg-sidebar-mobile.svg'
         alt='img'
