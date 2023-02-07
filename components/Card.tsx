@@ -11,7 +11,7 @@ function Card(props: {
   return (
     <div
       onClick={props.onClick}
-      className={`w-full lg:w-40 border border-light-gray rounded-md p-6 cursor-pointer flex space-x-4 md:flex-col md:space-y-8 md:space-x-0 hover:border-purplish-blue hover:bg-magnolia ${
+      className={`w-full lg:w-40 border border-light-gray rounded-md p-6 cursor-pointer flex space-x-4 md:flex-col md:space-y-8 md:space-x-0 hover:border-purplish-blue ${
         props.active && 'border-purplish-blue bg-magnolia'
       }`}
     >

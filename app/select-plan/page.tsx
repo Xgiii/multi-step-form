@@ -1,5 +1,6 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import ReactSwitch from 'react-switch';
 import Card from '../../components/Card';
@@ -7,6 +8,16 @@ import Card from '../../components/Card';
 function SelectPlan() {
   const [activeCard, setActiveCard] = useState(1);
   const [checked, setChecked] = useState(false);
+
+  const router = useRouter();
+
+  function nextStepHandler() {
+    router.push('/add-ons');
+  }
+
+  function goBackHandler() {
+    router.push('/');
+  }
 
   return (
     <div className='p-6 md:px-12 md:pt-12'>
@@ -69,18 +80,17 @@ function SelectPlan() {
           Yearly
         </h2>
       </div>
-      <div className='flex justify-between pt-[4vh] md:hidden'>
-        <button className='text-cool-gray font-bold hover:text-marine-blue'>
-          Go Back
-        </button>
-        <button className='main-btn'>Next Step</button>
-      </div>
 
-      <div className='hidden md:flex justify-between items-center md:py-4 lg:py-12'>
-        <button className='text-cool-gray font-bold hover:text-marine-blue'>
+      <div className='flex justify-between items-center pt-6 md:py-4 lg:py-12'>
+        <button
+          onClick={goBackHandler}
+          className='text-cool-gray font-bold hover:text-marine-blue'
+        >
           Go Back
         </button>
-        <button className='main-btn'>Next Step</button>
+        <button onClick={nextStepHandler} className='main-btn'>
+          Next Step
+        </button>
       </div>
     </div>
   );

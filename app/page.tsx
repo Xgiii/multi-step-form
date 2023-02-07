@@ -59,7 +59,7 @@ function HomePage() {
             <button className='main-btn'>Next Step</button>
           </div>
 
-          <div className='hidden md:flex justify-end md:py-4 lg:py-12'>
+          <div className='hidden md:flex justify-end lg:py-4'>
             <button className='main-btn'>Next Step</button>
           </div>
         </form>
