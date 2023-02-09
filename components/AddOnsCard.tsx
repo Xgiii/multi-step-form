@@ -11,7 +11,7 @@ function AddOnsCard(props: {
   return (
     <div
       onClick={props.onClick}
-      className={`w-full border border-light-gray rounded-md p-4 px-6 cursor-pointer flex items-center justify-between hover:border-purplish-blue ${
+      className={`w-full lg:min-w-[500px] border border-light-gray rounded-md p-4 px-6 cursor-pointer flex items-center justify-between hover:border-purplish-blue ${
         props.active && 'border-purplish-blue bg-magnolia'
       }`}
     >

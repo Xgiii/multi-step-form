@@ -23,7 +23,7 @@ export default function RootLayout({
           <main className='absolute left-[50%] top-[55%] translate-x-[-50%] translate-y-[-50%] w-[90vw] h-auto rounded-md bg-white shadow-lg md:hidden'>
             <div className='md:hidden'>{children}</div>
           </main>
-          <div className='hidden md:block ml-4'>{children}</div>
+          <div className='hidden md:block mx-auto'>{children}</div>
         </main>
       </body>
     </html>
