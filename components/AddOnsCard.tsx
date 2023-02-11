@@ -27,7 +27,7 @@ function AddOnsCard(props: {
         </div>
       </div>
       <p className='text-purplish-blue'>
-        +${props.price}/{props.yearly ? 'ye' : 'mo'}
+        +${props.price}/{props.yearly ? 'yr' : 'mo'}
       </p>
     </div>
   );

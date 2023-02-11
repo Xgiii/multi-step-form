@@ -1,16 +1,38 @@
 'use client';
+import Cookies from 'js-cookie';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import AddOnsCard from '../../components/AddOnsCard';
 
 function AddOnsPage() {
-  const [onlineServices, setOnlineServices] = useState(false);
+  const [onlineService, setOnlineService] = useState(false);
   const [largerStorage, setLargerStorage] = useState(false);
   const [customizableProfile, setCustomizableProfile] = useState(false);
+  const [yearly, setYearly] = useState(false);
+
+  useEffect(() => {
+    setYearly(JSON.parse(Cookies.get('yearly')!));
+
+    if (Cookies.get('online-service')) {
+      setOnlineService(JSON.parse(Cookies.get('online-services')!));
+    }
+
+    if (Cookies.get('larger-storage')) {
+      setLargerStorage(JSON.parse(Cookies.get('larger-storage')!));
+    }
+
+    if (Cookies.get('customizable-profile')) {
+      setCustomizableProfile(JSON.parse(Cookies.get('customizable-profile')!));
+    }
+  }, []);
 
   const router = useRouter();
 
   function nextStepHandler() {
+    Cookies.set('online-service', JSON.stringify(onlineService));
+    Cookies.set('larger-storage', JSON.stringify(largerStorage));
+    Cookies.set('customizable-profile', JSON.stringify(customizableProfile));
+
     router.push('/summary');
   }
 
@@ -25,40 +47,37 @@ function AddOnsPage() {
         Add-ons help enhance your gaming experience.
       </p>
       <AddOnsCard
-        active={onlineServices}
-        onClick={() => setOnlineServices((prevState) => !prevState)}
+        active={onlineService}
+        onClick={() => setOnlineService((prevState) => !prevState)}
         label='Online service'
-        price={1}
-        yearly={false}
+        price={yearly ? 10 : 1}
+        yearly={yearly}
         description='Access to multiplayer games'
       />
       <AddOnsCard
         active={largerStorage}
         onClick={() => setLargerStorage((prevState) => !prevState)}
         label='Larger storage'
-        price={2}
-        yearly={false}
+        price={yearly ? 20 : 2}
+        yearly={yearly}
         description='Extra 1TB of cloud save'
       />
       <AddOnsCard
         active={customizableProfile}
         onClick={() => setCustomizableProfile((prevState) => !prevState)}
         label='Customizable profile'
-        price={2}
-        yearly={false}
+        price={yearly ? 20 : 2}
+        yearly={yearly}
         description='Custom theme on your profile'
       />
       <div className='flex justify-between items-center pt-8 md:py-4 lg:py-10'>
         <button
-            onClick={goBackHandler}
+          onClick={goBackHandler}
           className='text-cool-gray font-bold hover:text-marine-blue'
         >
           Go Back
         </button>
-        <button
-           onClick={nextStepHandler}
-          className='main-btn'
-        >
+        <button onClick={nextStepHandler} className='main-btn'>
           Next Step
         </button>
       </div>

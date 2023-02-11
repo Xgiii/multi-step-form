@@ -39,21 +39,27 @@ interface Plan {
 }
 
 function SelectPlan() {
-  const [activeCard, setActiveCard] = useState(1);
-  const [selectedPlan, setSelectedPlan] = useState<Plan>();
+  const [selectedPlan, setSelectedPlan] = useState<Plan>({
+    id: 1,
+    label: 'Arcade',
+    iconSrc: '/icon-arcade.svg',
+    monthlyPrice: 9,
+    yearlyPrice: 90,
+  });
   const [checked, setChecked] = useState(false);
 
   const router = useRouter();
 
   useEffect(() => {
-    setSelectedPlan(JSON.parse(Cookies.get('plan')!));
+    if (Cookies.get('plan')) {
+      setSelectedPlan(JSON.parse(Cookies.get('plan')!));
+    }
     if (Cookies.get('yearly')) {
       setChecked(JSON.parse(Cookies.get('yearly')!));
     }
   }, []);
 
   function choosePlanHandler(plan: Plan) {
-    setActiveCard(plan.id);
     setSelectedPlan(plan);
   }
 
@@ -72,7 +78,7 @@ function SelectPlan() {
   }
 
   return (
-    <div className='p-6 md:p-0 md:pt-12'>
+    <div className='p-6 md:p-4 md:pt-12'>
       <h1 className='text-3xl text-marine-blue font-bold'>Select Your Plan</h1>
       <p className='text-xl text-cool-gray my-4'>
         You have the option of monthly or yearly billing.
@@ -86,6 +92,7 @@ function SelectPlan() {
             price={checked ? plan.yearlyPrice : plan.monthlyPrice}
             onClick={() => choosePlanHandler(plan)}
             active={selectedPlan ? selectedPlan.id === plan.id : true}
+            yearly={checked}
           />
         ))}
       </div>
