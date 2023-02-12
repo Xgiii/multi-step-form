@@ -10,11 +10,17 @@ function AddOnsPage() {
   const [customizableProfile, setCustomizableProfile] = useState(false);
   const [yearly, setYearly] = useState(false);
 
+  const router = useRouter()
+
   useEffect(() => {
-    setYearly(JSON.parse(Cookies.get('yearly')!));
+    if (Cookies.get('yearly')) {
+      setYearly(JSON.parse(Cookies.get('yearly')!));
+    } else {
+      router.push('select-plan')
+    }
 
     if (Cookies.get('online-service')) {
-      setOnlineService(JSON.parse(Cookies.get('online-services')!));
+      setOnlineService(JSON.parse(Cookies.get('online-service')!));
     }
 
     if (Cookies.get('larger-storage')) {
@@ -25,8 +31,6 @@ function AddOnsPage() {
       setCustomizableProfile(JSON.parse(Cookies.get('customizable-profile')!));
     }
   }, []);
-
-  const router = useRouter();
 
   function nextStepHandler() {
     Cookies.set('online-service', JSON.stringify(onlineService));
